@@ -5,7 +5,9 @@
   "description": "[![Actions Status](https://github.com/vlapinaa/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/vlapinaa/frontend-project-44/actions)",
   "bin": {
     "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-even": "bin/brain-even.js",
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gcd": "bin/brain-gcd.js"
   },
   "main": "index.js",
   "scripts": {
@@ -15,5 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1"
   }
 }
