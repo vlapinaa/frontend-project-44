@@ -17,7 +17,6 @@ export default () => {
     for (let j = 0; j < 9; j += 1) {
       const nextElem = progression[j] + stepProgr;
       progression.push(nextElem);
-      console.log('progr', j, stepProgr);
     }
     const randomElem = progression[randomIndex];
     progression[randomIndex] = ' .. ';
