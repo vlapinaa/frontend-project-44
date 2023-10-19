@@ -6,6 +6,7 @@ const NOD = (x, y) => {
   let resX = x;
   let resY = y;
   while (resX && resY) {
+    // eslint-disable-next-line no-unused-expressions
     resX > resY ? (resX %= resY) : (resY %= resX);
   }
   resX += resY;
