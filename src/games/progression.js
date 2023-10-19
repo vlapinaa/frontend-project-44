@@ -14,7 +14,7 @@ const playProgression = () => {
     progression.push(nextElem);
   }
   const correctAnswer = progression[randomIndex];
-  progression[randomIndex] = ' .. ';
+  progression[randomIndex] = '..';
   console.log(`Question: ${progression.join(' ')}`);
   const answer = readlineSync.question('Your answer: ');
 
