@@ -9,7 +9,7 @@ const playCalc = () => {
   const randomOperationIndex = Math.floor(Math.random() * arrOperation.length);
   const randomOperation = arrOperation[randomOperationIndex];
   let correctAnswer = 0;
-  console.log(`Question: ${firstElem}${randomOperation}${secondElem}`);
+  console.log(`Question: ${firstElem} ${randomOperation} ${secondElem}`);
   const answer = readlineSync.question('Your answer: ');
 
   switch (randomOperation) {
