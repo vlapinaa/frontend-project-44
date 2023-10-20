@@ -1,33 +1,21 @@
-import readlineSync from 'readline-sync';
 import playGame from '../index.js';
+import { generateRandomNumber, findGcd } from '../helpers.js';
 
-const question = 'Find the greatest common divisor of given numbers.';
-const NOD = (x, y) => {
-  let resX = x;
-  let resY = y;
-  while (resX && resY) {
-    // eslint-disable-next-line no-unused-expressions
-    resX > resY ? (resX %= resY) : (resY %= resX);
-  }
-  resX += resY;
-  return resX;
-};
+const description = 'Find the greatest common divisor of given numbers.';
 
-const playGCD = () => {
-  const firstElem = Math.floor(Math.random() * 100);
-  const secondElem = Math.floor(Math.random() * 100);
+const generateRound = () => {
+  const firstElem = generateRandomNumber(100);
+  const secondElem = generateRandomNumber(100);
 
-  console.log(`Question: ${firstElem} ${secondElem}`);
-  const answer = readlineSync.question('Your answer: ');
-  const correctAnswer = NOD(firstElem, secondElem);
+  const question = `Question: ${firstElem} ${secondElem}`;
+  const correctAnswer = findGcd(firstElem, secondElem);
 
   return ({
-    answer: Number(answer),
-    correctAnswer,
-
+    question,
+    correctAnswer: String(correctAnswer),
   });
 };
 
 export default () => {
-  playGame(question, playGCD);
+  playGame(description, generateRound);
 };

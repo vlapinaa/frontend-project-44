@@ -1,38 +1,24 @@
-import readlineSync from 'readline-sync';
 import playGame from '../index.js';
+import { generateRandomNumber, calculate } from '../helpers.js';
 
-const question = 'What is the result of the expression?';
-const playCalc = () => {
-  const arrOperation = ['+', '-', '*'];
-  const firstElem = Math.floor(Math.random() * 50);
-  const secondElem = Math.floor(Math.random() * 50);
-  const randomOperationIndex = Math.floor(Math.random() * arrOperation.length);
-  const randomOperation = arrOperation[randomOperationIndex];
-  let correctAnswer = 0;
-  console.log(`Question: ${firstElem} ${randomOperation} ${secondElem}`);
-  const answer = readlineSync.question('Your answer: ');
+const description = 'What is the result of the expression?';
 
-  switch (randomOperation) {
-    case '+':
-      correctAnswer = firstElem + secondElem;
-      break;
-    case '-':
-      correctAnswer = firstElem - secondElem;
-      break;
-    case '*':
-      correctAnswer = firstElem * secondElem;
-      break;
-    default:
-      console.error('wrong operation');
-  }
+const generateRound = () => {
+  const operators = ['+', '-', '*'];
+  const number1 = generateRandomNumber(50);
+  const number2 = generateRandomNumber(50);
+  const randomOperationIndex = Math.floor(Math.random() * operators.length);
+  const randomOperation = operators[randomOperationIndex];
+
+  const question = `Question: ${number1} ${randomOperation} ${number2}`;
+  const correctAnswer = calculate(randomOperation, number1, number2);
 
   return ({
-    answer: Number(answer),
-    correctAnswer,
-
+    question,
+    correctAnswer: String(correctAnswer),
   });
 };
 
 export default () => {
-  playGame(question, playCalc);
+  playGame(description, generateRound);
 };

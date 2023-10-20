@@ -1,30 +1,20 @@
-import readlineSync from 'readline-sync';
 import playGame from '../index.js';
+import { generateRandomNumber, isPrime } from '../helpers.js';
 
-const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const playPrime = () => {
-  const randNum = Math.floor(Math.random() * 5000);
-  const sqrtNum = Math.floor(Math.sqrt(randNum));
-  let prime = randNum !== 1;
-  for (let j = 2; j < sqrtNum; j += 1) {
-    if (randNum % j === 0) {
-      prime = false;
-      break;
-    }
-  }
+const generateRound = () => {
+  const randNum = generateRandomNumber(5000);
 
-  const correctAnswer = prime === false ? 'no' : 'yes';
-  console.log(`Question: ${randNum}`);
-  const answer = readlineSync.question('Your answer: ');
+  const correctAnswer = isPrime(randNum) === false ? 'no' : 'yes';
+  const question = `Question: ${randNum}`;
 
   return ({
-    answer,
+    question,
     correctAnswer,
-
   });
 };
 
 export default () => {
-  playGame(question, playPrime);
+  playGame(description, generateRound);
 };
