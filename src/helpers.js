@@ -57,7 +57,7 @@ export const findGcd = (x, y) => {
   while (resX && resY) {
     if (resX > resY) {
       resX %= resY;
-    } else {
+    } else if (resY > resX) {
       resY %= resX;
     }
   }
