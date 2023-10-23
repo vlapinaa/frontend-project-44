@@ -1,12 +1,19 @@
 import playGame from '../index.js';
-import { generateRandomNumber, isEven } from '../helpers.js';
+import generateRandomNumber from '../helpers.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
+const isEven = (number) => {
+  if (number % 2 === 0) {
+    return true;
+  }
+  return false;
+};
+
 const generateRound = () => {
-  const randNum = generateRandomNumber(50);
-  const question = `Question: ${randNum}`;
-  const correctAnswer = isEven(randNum) ? 'yes' : 'no';
+  const number = generateRandomNumber(0, 50);
+  const question = number;
+  const correctAnswer = isEven(number) ? 'yes' : 'no';
 
   return ({
     question,
